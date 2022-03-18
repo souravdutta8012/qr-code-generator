@@ -1,0 +1,17 @@
+{
+  "name": "qr-code-generator",
+  "version": "1.0.0",
+  "description": "QR code generator",
+  "main": "index.js",
+  "scripts": {
+    "build": "node qr-code.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sourav Dutta",
+  "license": "ISC",
+  "dependencies": {
+    "jspdf": "^2.5.1",
+    "qrcode": "^1.5.0"
+  }
+}
