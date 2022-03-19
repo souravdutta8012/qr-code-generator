@@ -1,5 +1,6 @@
 @echo off
 echo Creating QR code....
+mkdir output
 cd project
 call npm install
 call npm run build
