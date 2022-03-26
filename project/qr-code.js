@@ -18,17 +18,20 @@ QRCode.toDataURL(text, function (err, imgData) {
     }
     docPrinter.save(`../output/${setting.FileName}.pdf`);
 
-    const docA4 = new jsPDF('p', 'mm', "a4"); // W X H
-    // const companyTextWidth = docA4.getTextWidth(setting.CompanyName);
-    // docA4.text(13,  y + 0, setting.CompanyName);
-    // docA4.setFontSize(9);
-    y = 0;
+    const docA4 = new jsPDF('p', 'mm', 'a4');
     let width = docA4.internal.pageSize.getWidth();
+    docA4.setFontSize(12);
+    const companyTextWidth = docA4.getTextWidth(setting.CompanyName);
+    y = 0;
     for (let i = 0; i < 8; i++) {
         docA4.addImage(imgData, 'PNG', width / 8 - 25 / 2, y + 0, 25, 25);
+        docA4.text(width / 8 - companyTextWidth / 2, y + 28, setting.CompanyName);
         docA4.addImage(imgData, 'PNG', width * 3 / 8 - 25 / 2, y + 0, 25, 25);
+        docA4.text(width * 3 / 8 - companyTextWidth / 2, y + 28, setting.CompanyName);
         docA4.addImage(imgData, 'PNG', width * 5 / 8 - 25 / 2, y + 0, 25, 25);
+        docA4.text(width * 5 / 8 - companyTextWidth / 2, y + 28, setting.CompanyName);
         docA4.addImage(imgData, 'PNG', width * 7 / 8 - 25 / 2, y + 0, 25, 25);
+        docA4.text(width * 7 / 8 - companyTextWidth / 2, y + 28, setting.CompanyName);
         y += 37;
     }
     docA4.save(`../output/${setting.FileName}-a4.pdf`);
