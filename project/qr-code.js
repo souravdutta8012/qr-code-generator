@@ -4,7 +4,7 @@ const setting = require('../settings.json');
 
 text = `Voltage: ${setting.Voltage}V. Ampere: ${setting.Ampere}A. Manufacturing Date: ${setting.Date}. Company Name: ${setting.CompanyName}.`;
 
-QRCode.toDataURL(text, function (err, imgData) {
+QRCode.toDataURL(text, { margin: 0 }, function (err, imgData) {
     if (err) {
         console.log(err);
     }
@@ -12,9 +12,9 @@ QRCode.toDataURL(text, function (err, imgData) {
     const docPrinter = new jsPDF('p', 'mm', [101.6, 101.6]); // W X H
     let y = 0;
     for (let i = 0; i < 4; i++) {
-        docPrinter.addImage(imgData, 'PNG', 15.2, y + 0, 20, 20);
-        docPrinter.addImage(imgData, 'PNG', 65.7, y + 0, 20, 20);
-        y += 26.5;
+        docPrinter.addImage(imgData, 'PNG', 15.2, y + 0, 15, 15);
+        docPrinter.addImage(imgData, 'PNG', 67.7, y + 0, 15, 15);
+        y += 26.6;
     }
     docPrinter.save(`../output/${setting.FileName}.pdf`);
 
